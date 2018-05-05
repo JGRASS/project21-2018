@@ -1,20 +1,26 @@
 package menza.klase;
 import java.util.LinkedList;
 
+import menza.gui.prozori.GlavniProzor;
+
 public class Menzas extends Student {
 	private int brojDorucaka;
 	private int brojRuckova;
 	private int brojVecera;
 	private int racun;
 	private LinkedList<PojedenObrok> obroci;
-
-	public Menzas(int brojDorucaka, int brojRuckova, int brojVecera, int racun, LinkedList<PojedenObrok> obroci) {
-		super();
-		this.brojDorucaka = brojDorucaka;
-		this.brojRuckova = brojRuckova;
-		this.brojVecera = brojVecera;
-		this.racun = racun;
-		this.obroci = obroci;
+	
+	public Menzas() {
+		if(GlavniProzor.sistem.getMenzasi().size() != 0) {
+			long g = GlavniProzor.sistem.getMenzasi().getLast().getBrojKartice();
+			this.setBrojKartice( g + 1 );
+		} else {
+			this.setBrojKartice(0);
+		}
+		this.brojDorucaka = 0;
+		this.brojRuckova = 0;
+		this.brojVecera = 0;
+		this.obroci = new LinkedList<PojedenObrok>();
 	}
 
 	public int getBrojDorucaka() {
