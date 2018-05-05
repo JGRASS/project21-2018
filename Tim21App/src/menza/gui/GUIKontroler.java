@@ -80,7 +80,7 @@ public class GUIKontroler {
 		m.setPrezime(prezime);
 		m.setFakultet(fakultet);
 		
-		gp.sistem.getMenzasi().add(m);
+		gp.sistem.dodajMenzasa(m);
 		
 		prikaziSveMenzaseAdministracija();
 	}

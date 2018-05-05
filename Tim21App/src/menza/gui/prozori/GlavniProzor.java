@@ -41,7 +41,7 @@ public class GlavniProzor extends JFrame {
 		contentPane.add(getBtnAdministracijaMenzasa());
 		contentPane.add(getBtnMenzaUPogon());
 
-		sistem = new Menza("Nasa menza");
+		sistem = new Menza();
 	}
 
 	private JButton getBtnAdministracija() {
