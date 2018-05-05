@@ -1,3 +1,4 @@
+package menza.klase;
 
 public abstract class Student {
 	private String ime;

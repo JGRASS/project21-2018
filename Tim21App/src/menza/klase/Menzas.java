@@ -1,3 +1,4 @@
+package menza.klase;
 import java.util.LinkedList;
 
 public class Menzas extends Student {
@@ -5,7 +6,16 @@ public class Menzas extends Student {
 	private int brojRuckova;
 	private int brojVecera;
 	private int racun;
-	private LinkedList<Obrok> obroci;
+	private LinkedList<PojedenObrok> obroci;
+
+	public Menzas(int brojDorucaka, int brojRuckova, int brojVecera, int racun, LinkedList<PojedenObrok> obroci) {
+		super();
+		this.brojDorucaka = brojDorucaka;
+		this.brojRuckova = brojRuckova;
+		this.brojVecera = brojVecera;
+		this.racun = racun;
+		this.obroci = obroci;
+	}
 
 	public int getBrojDorucaka() {
 		return brojDorucaka;
@@ -39,11 +49,11 @@ public class Menzas extends Student {
 		this.racun = racun;
 	}
 
-	public LinkedList<Obrok> getObroci() {
+	public LinkedList<PojedenObrok> getObroci() {
 		return obroci;
 	}
 
-	public void setObroci(LinkedList<Obrok> obroci) {
+	public void setObroci(LinkedList<PojedenObrok> obroci) {
 		this.obroci = obroci;
 	}
 
