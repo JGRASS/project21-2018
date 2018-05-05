@@ -3,17 +3,19 @@ package menza.gui;
 import java.awt.EventQueue;
 import java.util.GregorianCalendar;
 
+import javax.swing.JFrame;
+
 import menza.Menza;
 import menza.gui.prozori.AdministracijaMenzasa;
 import menza.gui.prozori.AdministracijaMenze;
 import menza.gui.prozori.DodajMenzasa;
 import menza.gui.prozori.GlavniProzor;
 import menza.gui.prozori.Pogon;
+import menza.gui.prozori.UcitavanjeMenzasa;
 import menza.klase.Menzas;
 import menza.models.TableModel;
 
 public class GUIKontroler {
-	public static Menza sistem = new Menza("Tim21Menza");
 	public static GlavniProzor gp;
 	
 	/**
@@ -35,7 +37,6 @@ public class GUIKontroler {
 	public static void prikaziPogonGUI() {
 		Pogon pogon = new Pogon(new GregorianCalendar());
 		pogon.setVisible(true);
-		pogon.setAlwaysOnTop(true);
 		pogon.setLocationRelativeTo(gp);
 	}
 	
@@ -57,8 +58,19 @@ public class GUIKontroler {
 		prozor.setLocationRelativeTo(gp);
 	}
 	
-	public static void prikaziSveMenzase() {
+	public static void prikaziUcitavanjeMenzasaGUI() {
+		UcitavanjeMenzasa prozor = new UcitavanjeMenzasa();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(gp);		
+	}
+	
+	public static void prikaziSveMenzaseAdministracija() {
 		TableModel model = (TableModel)(AdministracijaMenzasa.table.getModel());
+		model.staviSveMenzaseUModel(gp.sistem.getMenzasi());
+	}
+	
+	public static void prikaziSveMenzaseUcitavanje() {
+		TableModel model = (TableModel)(UcitavanjeMenzasa.table.getModel());
 		model.staviSveMenzaseUModel(gp.sistem.getMenzasi());
 	}
 	
@@ -70,6 +82,17 @@ public class GUIKontroler {
 		
 		gp.sistem.getMenzasi().add(m);
 		
-		prikaziSveMenzase();
+		prikaziSveMenzaseAdministracija();
+	}
+	
+	
+	
+	public static void ucitajMenzasa(long brojKartice) {
+		for (int i = 0; i < gp.sistem.getMenzasi().size(); i++) {
+			long m = gp.sistem.getMenzasi().get(i).getBrojDorucaka();
+			if(m == brojKartice) {
+				Pogon.postaviMenzasaUPogon( gp.sistem.getMenzasi().get(i) );
+			}
+		}
 	}
 }

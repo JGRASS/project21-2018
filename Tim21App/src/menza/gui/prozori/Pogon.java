@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import menza.gui.GUIKontroler;
+import menza.klase.Menzas;
+
 import javax.swing.JButton;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -35,14 +39,17 @@ public class Pogon extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
-	private JTextArea textArea;
-	private JTextArea textArea_1;
-	private JTextArea textArea_2;
-	private JTextArea textArea_3;
-	private JTextArea txtrStanjeDorucaka;
-	private JTextArea txtrStanjeRuckova;
-	private JTextArea txtrStanjeVecera;
+	private static JTextArea taImePrezime;
+	private static JTextArea taFakultet;
+	private static JTextArea taBrojKartice;
+	private static JTextArea taDatumRodjenja;
+	private static JTextArea txtrStanjeDorucaka;
+	private static JTextArea txtrStanjeRuckova;
+	private static JTextArea txtrStanjeVecera;
+
 	private GregorianCalendar vreme;
+	public static Menzas ucitaniMenzas;
+
 	/**
 	 * Create the frame.
 	 */
@@ -59,15 +66,15 @@ public class Pogon extends JFrame {
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
 		vreme = v;
 		int sat = v.get(GregorianCalendar.HOUR_OF_DAY);
-		
-		if( sat >= 7 && sat <= 9 ) {
+
+		if (sat >= 7 && sat <= 9) {
 			btnDorucak.setEnabled(true);
 			btnRucak.setEnabled(false);
 			btnVecera.setEnabled(false);
-		} else if (sat >= 11 && sat <= 15 ) {
+		} else if (sat >= 11 && sat <= 15) {
 			btnDorucak.setEnabled(false);
 			btnRucak.setEnabled(true);
-			btnVecera.setEnabled(false); 
+			btnVecera.setEnabled(false);
 		} else {
 			btnDorucak.setEnabled(false);
 			btnRucak.setEnabled(false);
@@ -92,24 +99,28 @@ public class Pogon extends JFrame {
 		}
 		return panel;
 	}
+
 	private JButton getBtnRucak() {
 		if (btnRucak == null) {
 			btnRucak = new JButton("Rucak");
 		}
 		return btnRucak;
 	}
+
 	private JButton getBtnVecera() {
 		if (btnVecera == null) {
 			btnVecera = new JButton("Vecera");
 		}
 		return btnVecera;
 	}
+
 	private JButton getBtnDorucak() {
 		if (btnDorucak == null) {
 			btnDorucak = new JButton("Dorucak");
 		}
 		return btnDorucak;
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -119,16 +130,19 @@ public class Pogon extends JFrame {
 		}
 		return panel_1;
 	}
+
 	private JButton getBtnUcitajStudenta() {
 		if (btnUcitajStudenta == null) {
 			btnUcitajStudenta = new JButton("Ucitaj");
 			btnUcitajStudenta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.prikaziUcitavanjeMenzasaGUI();
 				}
 			});
 		}
 		return btnUcitajStudenta;
 	}
+
 	private JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
@@ -137,13 +151,14 @@ public class Pogon extends JFrame {
 			panel_2.add(getLblFakultet());
 			panel_2.add(getLblDatumRodjenja());
 			panel_2.add(getLblBrojKartice());
-			panel_2.add(getTextArea());
-			panel_2.add(getTextArea_1());
-			panel_2.add(getTextArea_2());
-			panel_2.add(getTextArea_3());
+			panel_2.add(getTaImePrezime());
+			panel_2.add(getTaFakultet());
+			panel_2.add(getTaBrojKartice());
+			panel_2.add(getTaDatumRodjenja());
 		}
 		return panel_2;
 	}
+
 	private JLabel getLblImeIPrezime() {
 		if (lblImeIPrezime == null) {
 			lblImeIPrezime = new JLabel("Ime i prezime:");
@@ -151,6 +166,7 @@ public class Pogon extends JFrame {
 		}
 		return lblImeIPrezime;
 	}
+
 	private JLabel getLblFakultet() {
 		if (lblFakultet == null) {
 			lblFakultet = new JLabel("Fakultet:");
@@ -158,6 +174,7 @@ public class Pogon extends JFrame {
 		}
 		return lblFakultet;
 	}
+
 	private JLabel getLblDatumRodjenja() {
 		if (lblDatumRodjenja == null) {
 			lblDatumRodjenja = new JLabel("Datum rodjenja:");
@@ -165,6 +182,7 @@ public class Pogon extends JFrame {
 		}
 		return lblDatumRodjenja;
 	}
+
 	private JLabel getLblBrojKartice() {
 		if (lblBrojKartice == null) {
 			lblBrojKartice = new JLabel("Broj kartice");
@@ -172,60 +190,68 @@ public class Pogon extends JFrame {
 		}
 		return lblBrojKartice;
 	}
+
 	private JLabel getLabel_1() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("Stanje dorucaka");
 		}
 		return lblNewLabel;
 	}
+
 	private JLabel getLabel_2() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("Stanje vecera");
 		}
 		return lblNewLabel_1;
 	}
+
 	private JLabel getLabel_3() {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("Stanje ruckova");
 		}
 		return lblNewLabel_2;
 	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setEditable(false);
-			textArea.setBackground(SystemColor.control);
-			textArea.setBounds(106, 40, 205, 22);
+
+	private JTextArea getTaImePrezime() {
+		if (taImePrezime == null) {
+			taImePrezime = new JTextArea();
+			taImePrezime.setEditable(false);
+			taImePrezime.setBackground(SystemColor.control);
+			taImePrezime.setBounds(106, 40, 205, 22);
 		}
-		return textArea;
+		return taImePrezime;
 	}
-	private JTextArea getTextArea_1() {
-		if (textArea_1 == null) {
-			textArea_1 = new JTextArea();
-			textArea_1.setEditable(false);
-			textArea_1.setBackground(SystemColor.control);
-			textArea_1.setBounds(106, 133, 205, 22);
+
+	private JTextArea getTaFakultet() {
+		if (taFakultet == null) {
+			taFakultet = new JTextArea();
+			taFakultet.setEditable(false);
+			taFakultet.setBackground(SystemColor.control);
+			taFakultet.setBounds(106, 133, 205, 22);
 		}
-		return textArea_1;
+		return taFakultet;
 	}
-	private JTextArea getTextArea_2() {
-		if (textArea_2 == null) {
-			textArea_2 = new JTextArea();
-			textArea_2.setEditable(false);
-			textArea_2.setBackground(SystemColor.control);
-			textArea_2.setBounds(451, 40, 179, 22);
+
+	private JTextArea getTaBrojKartice() {
+		if (taBrojKartice == null) {
+			taBrojKartice = new JTextArea();
+			taBrojKartice.setEditable(false);
+			taBrojKartice.setBackground(SystemColor.control);
+			taBrojKartice.setBounds(451, 40, 179, 22);
 		}
-		return textArea_2;
+		return taBrojKartice;
 	}
-	private JTextArea getTextArea_3() {
-		if (textArea_3 == null) {
-			textArea_3 = new JTextArea();
-			textArea_3.setEditable(false);
-			textArea_3.setBackground(SystemColor.control);
-			textArea_3.setBounds(451, 133, 179, 22);
+
+	private JTextArea getTaDatumRodjenja() {
+		if (taDatumRodjenja == null) {
+			taDatumRodjenja = new JTextArea();
+			taDatumRodjenja.setEditable(false);
+			taDatumRodjenja.setBackground(SystemColor.control);
+			taDatumRodjenja.setBounds(451, 133, 179, 22);
 		}
-		return textArea_3;
+		return taDatumRodjenja;
 	}
+
 	private JTextArea getTxtrStanjeDorucaka() {
 		if (txtrStanjeDorucaka == null) {
 			txtrStanjeDorucaka = new JTextArea();
@@ -236,6 +262,7 @@ public class Pogon extends JFrame {
 		}
 		return txtrStanjeDorucaka;
 	}
+
 	private JTextArea getTxtrStanjeRuckova() {
 		if (txtrStanjeRuckova == null) {
 			txtrStanjeRuckova = new JTextArea();
@@ -246,6 +273,7 @@ public class Pogon extends JFrame {
 		}
 		return txtrStanjeRuckova;
 	}
+
 	private JTextArea getTxtrStanjeVecera() {
 		if (txtrStanjeVecera == null) {
 			txtrStanjeVecera = new JTextArea();
@@ -255,5 +283,15 @@ public class Pogon extends JFrame {
 			txtrStanjeVecera.setText("Stanje Vecera");
 		}
 		return txtrStanjeVecera;
+	}
+
+	public static void postaviMenzasaUPogon(Menzas m) {
+		taFakultet.setText(m.getFakultet());
+		taImePrezime.setText(m.getIme() + " " + m.getPrezime());
+		taBrojKartice.setText(String.valueOf(m.getBrojKartice()));
+		taDatumRodjenja.setText(m.getDatumRodjenja());
+		txtrStanjeDorucaka.setText(String.valueOf(m.getBrojDorucaka()));
+		txtrStanjeRuckova.setText(String.valueOf(m.getBrojRuckova()));
+		txtrStanjeVecera.setText(String.valueOf(m.getBrojVecera()));
 	}
 }

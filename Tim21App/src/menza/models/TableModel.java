@@ -56,7 +56,7 @@ public class TableModel extends AbstractTableModel {
 		fireTableDataChanged();
 	}
 
-	public Menzas vratiValutu(int index) {
+	public Menzas vratiMenzasa(int index) {
 		return menzasi.get(index);
 	}
 
