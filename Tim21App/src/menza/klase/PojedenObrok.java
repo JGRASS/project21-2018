@@ -1,9 +1,16 @@
 package menza.klase;
 import java.util.GregorianCalendar;
 
+/**
+ * Klasa koja predstavlja jedan pojeden obrok (dorucak, rucak ili vecera)
+ * Sadrzi atribute datum tipa GregorianCalendar i obrok tipa String
+ * @author Stefan Lukic
+ * @version 1.0.
+ *
+ */
 public class PojedenObrok {
 	private GregorianCalendar datum;
-	private String obrok; // dorucak rucak ili vecera, da znate kad dokumentujete posle itd.
+	private String obrok;
 
 	public PojedenObrok(GregorianCalendar datum, String obrok) {
 		super();

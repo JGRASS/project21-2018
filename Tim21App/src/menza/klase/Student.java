@@ -1,5 +1,13 @@
 package menza.klase;
 
+/**
+ * Klasa koja predstavlja jednog studenta
+ * Sadrzi atribute ime, prezime, datumRodjenja, fakultet koji su tipa String
+ * i atribut brojKartice tipa long
+ * @author Stefan Lukic
+ * @version 1.0.
+ *
+ */
 public abstract class Student {
 	private String ime;
 	private String prezime;

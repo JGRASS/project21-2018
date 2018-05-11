@@ -4,6 +4,10 @@ import java.util.LinkedList;
 
 import menza.klase.Menzas;
 
+/**
+ * Klasa koja sadrzi staticku metodu koja predstavlja sistemsku operaciju dodavanja meznasa
+ * @param m objekat klase Menzas, LinkeList menzasi koja predstavlja listu u koju se ubacuje dati menzas
+ */
 public class SODodajMenzasa {
 	public static void izvrsi(Menzas m, LinkedList<Menzas> menzasi) {
 		if(m == null) {
