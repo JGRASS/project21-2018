@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 /**
  * Klasa koja predstavlja jedan pojeden obrok (dorucak, rucak ili vecera)
  * Sadrzi atribute datum tipa GregorianCalendar i obrok tipa String
- * @author Stefan Lukic
+ * @author team21
  * @version 1.0.
  *
  */

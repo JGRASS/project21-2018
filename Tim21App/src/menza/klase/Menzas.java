@@ -6,7 +6,7 @@ import menza.gui.prozori.GlavniProzor;
  * Klasa koja predstavlja jednog menzasa i nasledju klasu Student
  * Sadrzi atribute brojDorucaka, brojRuckova, brojVecera, racun koji su tipa int
  * i atribut obroci koji je tipa LinkedList objekata PojedenObroj i predstavlja listu obroka kojim raspolaze menzas
- * @author Stefan Lukic
+ * @author team21
  * @version 1.0.
  *
  */

@@ -4,7 +4,7 @@ package menza.klase;
  * Klasa koja predstavlja jednog studenta
  * Sadrzi atribute ime, prezime, datumRodjenja, fakultet koji su tipa String
  * i atribut brojKartice tipa long
- * @author Stefan Lukic
+ * @author team21
  * @version 1.0.
  *
  */

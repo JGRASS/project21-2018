@@ -7,7 +7,7 @@ import menza.klase.Zaliha;
 import menza.sistemskeoperacije.SODodajMenzasa;
 /**
  * Klasa koja predstavlja studentsku menzu
- * @author Stefan Lukic
+ * @author team21
  * @version 1.0.
  *
  */

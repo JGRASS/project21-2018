@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 /**
  * Klasa koja predstavlja zalihe menze
  * Sadrzi atribute nazivProizvoda koji je tipa String, atribut kolicina tipa int i datumUlaza koji je tipa GregorianCalendar
- * @author Stefan Lukic
+ * @author team21
  * @version 1.0.
  *
  */

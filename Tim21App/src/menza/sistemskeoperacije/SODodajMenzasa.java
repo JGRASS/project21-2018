@@ -6,6 +6,7 @@ import menza.klase.Menzas;
 
 /**
  * Klasa koja sadrzi staticku metodu koja predstavlja sistemsku operaciju dodavanja meznasa
+ * @author team21
  * @param m objekat klase Menzas, LinkeList menzasi koja predstavlja listu u koju se ubacuje dati menzas
  */
 public class SODodajMenzasa {
